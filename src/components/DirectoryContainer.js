@@ -59,14 +59,19 @@ class DirectoryContainer extends Component {
             <Card
               heading="Employees"
             >
-              <EmployeeDetail
-              // match this section to the EmployeeDetail component
-              // title={this.state.result.Title}
-              // src={this.state.result.Poster}
-              // director={this.state.result.Director}
-              // genre={this.state.result.Genre}
-              // released={this.state.result.Released}
-              />
+              {/* change below from friend to applicable state info */}
+              {this.state.friends.map(friend => (
+                <EmployeeDetail
+                //have below match employeedetail props
+                // removeFriend={this.removeFriend}
+                // id={friend.id}
+                // key={friend.id}
+                // name={friend.name}
+                // image={friend.image}
+                // occupation={friend.occupation}
+                // location={friend.location}
+                />
+              ))}
             </Card>
           </Col>
         </Row>
