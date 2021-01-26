@@ -1,5 +1,4 @@
 import React from "react";
-import Row from "./Row";
 import Col from "./Col";
 
 function EmployeeDetail(props) {
@@ -36,9 +35,3 @@ function EmployeeDetail(props) {
 }
 
 export default EmployeeDetail;
-
-
-{/* <img alt={props.title} className="img-fluid" src={props.src} style={{ margin: "0 auto" }} />
-      <h3>Director(s): {props.director}</h3>
-      <h3>Genre: {props.genre}</h3>
-      <h3>Released: {props.released}</h3> */}
