@@ -5,7 +5,7 @@ import Col from "./Col";
 import Card from "./Card";
 import SearchForm from "./SearchForm";
 import EmployeeDetail from "./EmployeeDetail";
-import API from "../utils/API";
+import search from "../utils/API";
 import Header from "./Header";
 
 class DirectoryContainer extends Component {
@@ -14,14 +14,15 @@ class DirectoryContainer extends Component {
     search: ""
   };
 
-  searchDirectory = query => {
-    API.search(query)
-      .then(res => this.setState({ result: res.data }))
+  searchDirectory = () => {
+    search()
+      .then(res => this.setState({ result: res.data.result }))
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
-    // this.searchDirectory("");
+    this.searchDirectory();
+
   }
 
   handleInputChange = event => {
@@ -34,7 +35,7 @@ class DirectoryContainer extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchDirectory(this.state.search);
+    // this.searchDirectory(this.state.search);
   };
 
   render() {
@@ -60,18 +61,16 @@ class DirectoryContainer extends Component {
               heading="Employees"
             >
               {/* change below from friend to applicable state info */}
-              {this.state.friends.map(friend => (
+              {/* {this.state.employees.map(employee => (
                 <EmployeeDetail
-                //have below match employeedetail props
-                // removeFriend={this.removeFriend}
-                // id={friend.id}
-                // key={friend.id}
-                // name={friend.name}
-                // image={friend.image}
-                // occupation={friend.occupation}
-                // location={friend.location}
+                  //have below match employeedetail props
+                  name={employee.name}
+                  image={employee.image}
+                  phone={employee.phone}
+                  email={employee.email}
+                  dob={employee.dob}
                 />
-              ))}
+              ))} */}
             </Card>
           </Col>
         </Row>
