@@ -1,28 +1,32 @@
 import React, { Component } from "react";
 import Container from "./Container";
-import Row from "./Row";
-import Col from "./Col";
-import Card from "./Card";
-import SearchForm from "./SearchForm";
-import EmployeeDetail from "./EmployeeDetail";
-import search from "../utils/API";
+// import Row from "./Row";
+// import Col from "./Col";
+// import Card from "./Card";
 import Header from "./Header";
+import Table from "./Table";
+import SearchForm from "./SearchForm";
+// import EmployeeDetail from "./EmployeeDetail";
+import search from "../utils/API";
+
 
 class DirectoryContainer extends Component {
-  state = {
-    result: {},
-    search: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+      results: []
+    };
+  }
 
-  searchDirectory = () => {
+  loadDirectory = () => {
     search()
-      .then(res => this.setState({ result: res.data.result }))
+      .then(res => this.setState({ result: res.data.results }))
       .catch(err => console.log(err));
   };
 
   componentDidMount() {
-    this.searchDirectory();
-
+    this.loadDirectory();
   }
 
   handleInputChange = event => {
@@ -35,45 +39,20 @@ class DirectoryContainer extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // this.searchDirectory(this.state.search);
+    // this.loadDirectory(this.state.search);
   };
 
   render() {
+    console.log(this.state.result);
     return (
       <Container>
-        <Row>
-          <Col size="md-12">
-            <Card>
-              <Header />
-              <Col size="md-4">
-                <SearchForm
-                  value={this.state.search}
-                  handleInputChange={this.handleInputChange}
-                  handleFormSubmit={this.handleFormSubmit}
-                />
-              </Col>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md">
-            <Card
-              heading="Employees"
-            >
-              {/* change below from friend to applicable state info */}
-              {/* {this.state.employees.map(employee => (
-                <EmployeeDetail
-                  //have below match employeedetail props
-                  name={employee.name}
-                  image={employee.image}
-                  phone={employee.phone}
-                  email={employee.email}
-                  dob={employee.dob}
-                />
-              ))} */}
-            </Card>
-          </Col>
-        </Row>
+        <Header />
+        <SearchForm
+          value={this.state.search}
+          handleInputChange={this.handleInputChange}
+          handleFormSubmit={this.handleFormSubmit}
+        />
+        <Table></Table>
       </Container>
     );
   }
