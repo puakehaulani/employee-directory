@@ -4,6 +4,7 @@ import Col from "./Col";
 function EmployeeDetail(props) {
   return (
     <div className="list-group list-group-horizontal">
+
       {/* enter in employee specific info */}
       <Col size="md">
         <h4>Image</h4>
