@@ -44,12 +44,15 @@ class DirectoryContainer extends Component {
     return (
       <>
         < Container >
-          <Header />
-          <SearchForm
+          <Header
+            value={this.state.search}
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit} />
+          {/* <SearchForm
             value={this.state.search}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
-          />
+          /> */}
           <Table
             results={resultsData}
           />

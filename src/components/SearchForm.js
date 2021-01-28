@@ -3,8 +3,8 @@ import React from "react";
 
 function SearchForm(props) {
   return (
-    <form className="form-inline">
-      <div className="form-group">
+    <form className="form-inline mx-auto">
+      <div className="form-group mb-2">
         <input
           onChange={props.handleInputChange}
           value={props.value}
