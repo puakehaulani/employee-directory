@@ -39,22 +39,22 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    console.log("container" + this.state.results);
     let resultsData = this.state.results;
 
     return (
-
-      < Container >
-        <Header />
-        <SearchForm
-          value={this.state.search}
-          handleInputChange={this.handleInputChange}
-          handleFormSubmit={this.handleFormSubmit}
-        />
-        <Table
-          results={resultsData}
-        />
-      </Container >
+      <>
+        < Container >
+          <Header />
+          <SearchForm
+            value={this.state.search}
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+          <Table
+            results={resultsData}
+          />
+        </Container >
+      </>
     );
   }
 }

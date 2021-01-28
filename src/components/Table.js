@@ -4,11 +4,11 @@ import TableData from "./TableData"
 function Table(props) {
 
     return (
-        <table className="table">
-            {console.log("table" + props)}
-            <thead>
+        <table className="table table-striped table-hover table-fluid">
+
+            <thead >
                 <tr>
-                    <th scope="col">Image</th>
+                    <th scope="col">Photo</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
@@ -17,6 +17,7 @@ function Table(props) {
             <TableData
                 results={props.results} key={props.phone}
             />
+
         </table>
     )
 }

@@ -1,7 +1,7 @@
 // checked??
 import React from "react";
 
-function Header(props) {
+function Header() {
     return (
         <div className="jumbotron jumbotron-fluid">
             <h1 className="display-4">Employee Directory</h1>
