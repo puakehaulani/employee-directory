@@ -39,11 +39,12 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    console.log("container" + this.state.result);
-    // let resultsData = this.state.results;
+    console.log("container" + this.state.results);
+    let resultsData = this.state.results;
 
     return (
-      <Container>
+
+      < Container >
         <Header />
         <SearchForm
           value={this.state.search}
@@ -51,9 +52,9 @@ class DirectoryContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
         />
         <Table
-          results={this.state.results}
+          results={resultsData}
         />
-      </Container>
+      </Container >
     );
   }
 }
