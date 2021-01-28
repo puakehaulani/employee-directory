@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import Container from "./Container";
-// import Row from "./Row";
-// import Col from "./Col";
-// import Card from "./Card";
 import Header from "./Header";
 import Table from "./Table";
 import SearchForm from "./SearchForm";
-// import EmployeeDetail from "./EmployeeDetail";
 import search from "../utils/API";
 
 
@@ -21,7 +17,7 @@ class DirectoryContainer extends Component {
 
   loadDirectory = () => {
     search()
-      .then(res => this.setState({ result: res.data.results }))
+      .then(res => this.setState({ results: res.data.results }))
       .catch(err => console.log(err));
   };
 
@@ -43,7 +39,9 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    console.log(this.state.result);
+    console.log("container" + this.state.result);
+    // let resultsData = this.state.results;
+
     return (
       <Container>
         <Header />
@@ -52,7 +50,9 @@ class DirectoryContainer extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
-        <Table></Table>
+        <Table
+          results={this.state.results}
+        />
       </Container>
     );
   }

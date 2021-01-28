@@ -1,9 +1,10 @@
 import React from 'react'
 import TableData from "./TableData"
 
-function Table() {
+function Table(props) {
     return (
         <table className="table">
+            {console.log("table" + props)}
             <thead>
                 <tr>
                     <th scope="col">Image</th>
@@ -13,9 +14,9 @@ function Table() {
                     <th scope="col">DOB</th>
                 </tr>
             </thead>
-            <tbody>
-                {TableData}
-            </tbody>
+            <TableData
+                results={props.results}
+            />
         </table>
     )
 }
