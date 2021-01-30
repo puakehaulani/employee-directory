@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Container from "./Container";
 import Header from "./Header";
 import Table from "./Table";
-import SearchForm from "./SearchForm";
 import search from "../utils/API";
+import usertest from "../usertest.json";
 
 
 class DirectoryContainer extends Component {
@@ -11,14 +11,17 @@ class DirectoryContainer extends Component {
     super(props);
     this.state = {
       value: '',
-      results: []
+      results: [],
+      filteredResults: []
     };
   }
 
   loadDirectory = () => {
     search()
-      .then(res => this.setState({ results: res.data.results }))
-      .catch(err => console.log(err));
+      .then(res => {
+        return res.data.results ? (this.setState({ results: res.data.results })) : (this.setState({ results: usertest }))
+      })
+    // .catch(err => console.log(err));
   };
 
   componentDidMount() {
@@ -30,7 +33,22 @@ class DirectoryContainer extends Component {
     const value = event.target.value;
     this.setState({
       [name]: value
+    }, () => {
+      let latestState = this.state.results;
+      let filterList = latestState.filter((item) => {
+        //return true for users that match text input
+        // tolowercase(), includes() item.name.first item.name.last
+        var wholeName = item.name.first + item.name.last;
+        return wholeName.toLowerCase().includes(this.state.search)
+        //return false for users that dont
+      })
+      this.setState({
+        filteredResults: filterList
+      }, () => {
+        console.log(this.state.filteredResults)
+      })
     });
+
   };
 
   handleFormSubmit = event => {
@@ -39,8 +57,6 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    let resultsData = this.state.results;
-
     return (
       <>
         < Container >
@@ -48,18 +64,12 @@ class DirectoryContainer extends Component {
             value={this.state.search}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit} />
-          {/* <SearchForm
-            value={this.state.search}
-            handleInputChange={this.handleInputChange}
-            handleFormSubmit={this.handleFormSubmit}
-          /> */}
           <Table
-            results={resultsData}
+            results={this.state.search ? this.state.filteredResults : this.state.results}
           />
         </Container >
       </>
     );
   }
 }
-
 export default DirectoryContainer;
