@@ -8,7 +8,7 @@ function Header(props) {
             <h1 className="display-4">Employee Directory</h1>
             <p className="lead">Click field name to sort or use the search box to narrow your result</p>
             <SearchForm
-                value={props.search}
+                // value={props.value}
                 handleInputChange={props.handleInputChange}
                 handleFormSubmit={props.handleFormSubmit}
             />

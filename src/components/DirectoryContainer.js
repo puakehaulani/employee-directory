@@ -39,6 +39,7 @@ class DirectoryContainer extends Component {
         //return true for users that match text input
         // tolowercase(), includes() item.name.first item.name.last
         var wholeName = item.name.first + item.name.last;
+        console.log(this.state.search);
         return wholeName.toLowerCase().includes(this.state.search)
         //return false for users that dont
       })
@@ -61,7 +62,7 @@ class DirectoryContainer extends Component {
       <>
         < Container >
           <Header
-            value={this.state.search}
+            // value={this.state.search}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit} />
           <Table

@@ -2,7 +2,6 @@ import React from 'react'
 import TableData from "./TableData"
 
 function Table(props) {
-    console.log(props)
     return (
         <table className="table table-striped table-hover table-fluid">
 
