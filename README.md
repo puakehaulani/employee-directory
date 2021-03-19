@@ -4,7 +4,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Explore the docs](https://github.com/puakehaulani/employee-directory)
+[Explore the docs](https://github.com/puakehaulani/employee-directory)  
+[See the deployment](https://puakehaulani.github.io/employee-directory/)
 
 ---
 
